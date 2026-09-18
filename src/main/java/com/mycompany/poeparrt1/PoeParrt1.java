@@ -48,6 +48,7 @@ public class PoeParrt1 {
              System.out.println("register.registerUser(name, password, cellphone");
              
              if(!register.registerStatus(name, password, cellphone)){
+                 System.out.println("enter username to login: ");
              }
     }
              
