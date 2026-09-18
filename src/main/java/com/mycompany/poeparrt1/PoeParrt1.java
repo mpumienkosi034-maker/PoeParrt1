@@ -49,6 +49,7 @@ public class PoeParrt1 {
              
              if(!register.registerStatus(name, password, cellphone)){
                  System.out.println("enter username to login: ");
+                 String enteredusername = scan.nextLine();
                  
                  System.out.println("enter password to login: ");
                  String enteredpassword = scan.nextLine();
