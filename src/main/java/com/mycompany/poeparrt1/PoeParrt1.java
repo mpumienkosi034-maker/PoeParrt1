@@ -32,6 +32,9 @@ public class PoeParrt1 {
              System.out.println("Please enter the username");
             String name = scan.nextLine();
             
+            System.out.println("Enter first name");
+            String firstname = scan.nextLine();
+            
             
              System.out.println("Please enter the passowrd");
              String password = scan.nextLine();
