@@ -15,7 +15,7 @@ public class Registrationn { //start of class
     String CellPhone;
     
     public boolean checkUserName(String username){ //start of username method
-        return username.contains("@") && username.length()==3;
+        return username.contains("_") && username.length()<=5; 
     
     } //end of username method
     
@@ -44,9 +44,9 @@ public class Registrationn { //start of class
             this.Password = password;
             this.CellPhone = cellphone;
             
-        return "Registration was unsuccessful";
+        return "Registration was successful"; //Fixed
         }else{
-            return "Registration was successful";
+            return "Registration was unsuccessful"; //Fixed
         }
     }
      public boolean registerStatus(String username, String password, String cellphone){
