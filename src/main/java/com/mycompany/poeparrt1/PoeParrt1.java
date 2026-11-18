@@ -55,6 +55,7 @@ public class PoeParrt1 {
         // ==========================================
         if (loginSuccess) {
             System.out.println("\nWelcome to QuickChat.");
+            Message.loadMessagesFromJson(); //Loads stored messages from the file
             boolean running = true;
             int numMessages = 0;
             boolean messagesSet = false;
@@ -64,6 +65,7 @@ public class PoeParrt1 {
                 System.out.println("1) Send Messages");
                 System.out.println("2) Show recently sent messages");
                 System.out.println("3) Quit");
+                System.out.println("4) Stored Messages"); // <--NEW
                 System.out.print("Choose an option: ");
 
                 int choice;
@@ -133,7 +135,52 @@ public class PoeParrt1 {
                         System.out.println("Goodbye!");
                         running = false;
                         break;
-
+                                        
+                    case 4:
+                        boolean subMenuRunning = true;
+                        while (subMenuRunning) {
+                            System.out.println("\n--- Stored Messages Menu ---");
+                            System.out.println("a) Display sender and recipient of all stored messages");
+                            System.out.println("b) Display the longest stored message");
+                            System.out.println("c) Search for a message ID");
+                            System.out.println("d) Search messages by recipient");
+                            System.out.println("e) Delete a message using message hash");
+                            System.out.println("f) Display report of all stored messages");
+                            System.out.println("g) Back to Main Menu");
+                            System.out.print("Choose an option (a-g): ");
+                            
+                            String subChoice = scan.nextLine().toLowerCase();
+                            
+                            switch (subChoice) {
+                                case "a":
+                                    Message.displayStoredMessages();
+                                    break;
+                                case "b":
+                                    Message.displayLongestMessage();
+                                    break;
+                                case "c":
+                                    System.out.print("Enter Message ID: ");
+                                    Message.searchByMessageID(scan.nextLine());
+                                    break;
+                                case "d":
+                                    System.out.print("Enter Recipient Number: ");
+                                    Message.searchByRecipient(scan.nextLine());
+                                    break;
+                                case "e":
+                                    System.out.print("Enter Message Hash: ");
+                                    Message.deleteByHash(scan.nextLine());
+                                    break;
+                                case "f":
+                                    Message.displayReport();
+                                    break;
+                                case "g":
+                                    subMenuRunning = false;
+                                    break;
+                                default:
+                                    System.out.println("Invalid option. Please choose a-g.");
+                            }
+                        }
+                        break;
                     default:
                         System.out.println("Invalid option. Please choose 1, 2, or 3.");
                 }
